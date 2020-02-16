@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import UserProfile from './UserProfile.js';
 import RepoList from './Repos.js';
 
 const MyUserInfo = styled.section`
@@ -33,11 +34,7 @@ class UserInfo extends Component {
     render() {
         return (
             <MyUserInfo>
-                <section>
-                    <p>É aqui que eu faço o fetch das infos do user<br />
-                        (nome, about, followers? following?, # de repos, # de favs?)<br />
-                        e um link para os repos (que iria trigger o componente de repos)</p>
-                </section>
+                <UserProfile />
 
                 <RepoList />
             </MyUserInfo>
