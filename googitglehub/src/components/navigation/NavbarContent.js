@@ -57,6 +57,10 @@ const MyNavbarContent = styled.nav`
         font-weight: bold;
         font-size: 3vh;
     }
+
+    li {
+        background-color: rgb(219, 248, 248);
+    }
 `
 
 const NavbarContent = () => {

@@ -21,22 +21,35 @@ const MyUserInfo = styled.section`
     margin-top: 6vh;
 
     p {
-        padding: 0vh 4vw 2vh 4vw;
-        text-align: center;
-        line-height: 6vh;
         background-color: rgb(253, 253, 253);
         font-family: 'Lato', sans-serif;
         font-weight: 300;
     }
+
+    .btn {
+        width: 10vw;
+    }
 `
 
 class UserInfo extends Component {
+    state = {
+        btnClicked: ''
+    }
+
+    handleSubmit = (e) => {
+        this.setState({ btnClicked: e.target.name });
+    }
+
     render() {
         return (
             <MyUserInfo>
                 <UserProfile />
 
-                <RepoList />
+                <button onClick={this.handleSubmit} name="clicked" className="btn">click</button>
+
+                {
+                    this.state.btnClicked === "clicked" && <RepoList />
+                }
             </MyUserInfo>
         );
     }
