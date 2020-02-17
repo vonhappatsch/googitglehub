@@ -8,10 +8,10 @@ const MyUserProfile = styled.section`
 
     .user-info-card {
         background-color: ${(props => (props.theme.yellow))};
-        padding: 0vh 1vw 2vh 1vw;
+        padding: 0vh 5vw 2vh 5vw;
         display: flex;
         flex-flow: column nowrap;
-        justify-content: space-around;
+        justify-content: center;
         align-items: center;
     }
 
@@ -47,7 +47,8 @@ const MyUserProfile = styled.section`
     }
 
     .user-bio {
-        word-wrap: break-word;
+        text-align: center;
+        line-height: 4vh;
     }
 
     b, i {
@@ -66,7 +67,7 @@ const MyUserProfile = styled.section`
     
         .user-bio {
             font-size: 2.6vh;
-            line-height: 4vh;
+            line-height: 5vh;
         }
 
         .user-following, .user-repos {

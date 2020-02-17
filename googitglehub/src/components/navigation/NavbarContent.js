@@ -76,7 +76,7 @@ const NavbarContent = () => {
                     <Link to="/" className="link">Home</Link>
                 </li>
                 <li>
-                    <Link to="/another-user" className="link">Another user</Link>
+                    <Link to="/about" className="link">About</Link>
                 </li>
             </ul>
         </MyNavbarContent>

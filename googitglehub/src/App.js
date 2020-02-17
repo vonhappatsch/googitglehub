@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import Navbar from './components/navigation/Navbar.js';
 import Home from './pages/home.js';
 import Commit from './components/commits/Commit.js';
-import AnotherUser from './pages/another-user.js';
+import About from './pages/about.js';
 
 /* 
 This is the layout component. It's displayed by the top-level Route
@@ -30,7 +30,7 @@ class App extends React.Component {
           <Navbar />
           <Route exact path='/' component={Home} />
           <Route path='/commit-list/:repo_name' component={Commit} />
-          <Route path='/another-user' component={AnotherUser} />
+          <Route path='/about' component={About} />
         </ThemeProvider>
       </Router>
     );
