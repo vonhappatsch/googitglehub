@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+// import searchUser from '../components/searchUser/searchUser.js';
 import UserInfo from '../components/profile/UserInfo.js';
 
 const MyAbout = styled.section`

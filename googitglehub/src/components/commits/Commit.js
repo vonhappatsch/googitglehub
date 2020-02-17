@@ -36,12 +36,11 @@ class Commit extends Component {
 
     componentDidMount() {
         let id = this.props.match.params.repo_name;
-        axios.get(`https://api.github.com/repos/vonhappatsch/${id}/commits`)
+        axios.get(`https://api.github.com/repos/vonhappatsch/${id}/commits?per_page=20`)
             .then(res => {
                 this.setState({ commits: res.data });
             })
     }
-
 
 
     render() {

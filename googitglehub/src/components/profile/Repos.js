@@ -7,6 +7,7 @@ const MyRepoList = styled.section`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    margin: 0vh 0vw 2vh 0vw;
 
     background-color: rgb(253, 253, 253);
 
