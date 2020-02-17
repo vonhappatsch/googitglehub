@@ -19,7 +19,7 @@ const MyRepoList = styled.section`
         box-shadow: 4px 4px black;
         border-radius: 2px;
 
-        background-color: rgb(253, 253, 253);
+        background: ${(props => (props.theme.white))};
 
         font-family: 'Old Standard TT', serif;
         font-weight: bold;
@@ -32,6 +32,7 @@ const MyRepoList = styled.section`
         font-weight: 300;
         font-size: 2.4vh;
         line-height: 4vh;
+        background: ${(props => (props.theme.white))};
     }
 `
 
@@ -46,14 +47,6 @@ class RepoList extends Component {
                 this.setState({ repositories: res.data });
             })
     }
-
-    // fazer botoes com essas funções:
-
-    // order by stars
-
-    // order by date
-
-    // order by name
 
     render() {
         return (
