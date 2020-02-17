@@ -25,7 +25,7 @@ const theme = {
 class App extends React.Component {
   render() {
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <ThemeProvider theme={theme}>
           <Navbar />
           <Route exact path='/' component={Home} />
