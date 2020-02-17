@@ -21,8 +21,17 @@ const MyRepoList = styled.section`
 
         background-color: rgb(253, 253, 253);
 
+        font-family: 'Old Standard TT', serif;
+        font-weight: bold;
         text-decoration: none;
         word-wrap: break-word;
+    }
+
+    .repo-description {
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 2.4vh;
+        line-height: 4vh;
     }
 `
 
@@ -50,7 +59,7 @@ class RepoList extends Component {
         return (
             <MyRepoList>
                 {
-                    this.state.repositories.map(repo => <Link to={'/commit-list/' + repo.name} key={repo.id} className="repo-link">{repo.name}<p>{repo.description}</p></Link>)
+                    this.state.repositories.map(repo => <Link to={'/commit-list/' + repo.name} key={repo.id} className="repo-link">{repo.name}<p className="repo-description">{repo.description}</p></Link>)
                 }
             </MyRepoList>
         );

@@ -8,7 +8,7 @@ const MyNavbarContent = styled.nav`
     align-items: center;
 
     background: ${(props => (props.theme.aqua))};
-    color: rgb(31, 31, 31);
+    color: ${(props => (props.theme.black))};
     box-shadow: 10px 6px black;
     font-family: 'Lato', sans-serif;
     font-weight: 400;

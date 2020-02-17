@@ -25,7 +25,7 @@ const MyUserProfile = styled.section`
     .user-avatar {
         width: 40%;
         height: auto;
-        box-shadow: 5px -5px black;
+        box-shadow: 5px -5px ${(props => (props.theme.black))};
     }
 
     .user-login {
@@ -33,16 +33,21 @@ const MyUserProfile = styled.section`
         font-size: 2.8vh;
         font-family: 'Old Standard TT', serif;
         font-weight: 400i;
+        text-shadow: 2px 3px 5px rgba(82,82,82,0.21);
         line-height: 6vh;
     }
 
     .user-following, .user-repos, .user-bio {
         background: ${(props => (props.theme.yellow))};
-    }
-
-    p {
+        text-shadow: 2px 3px 5px rgba(82,82,82,0.18);
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
         font-size: 2.4vh;
         line-height: 3.5vh;
+    }
+
+    .user-bio {
+        word-wrap: break-word;
     }
 
     b, i {
@@ -59,7 +64,12 @@ const MyUserProfile = styled.section`
             font-size: 3.2vh;
         }
     
-        p {
+        .user-bio {
+            font-size: 2.6vh;
+            line-height: 4vh;
+        }
+
+        .user-following, .user-repos {
             font-size: 2.3vh;
         }
     }

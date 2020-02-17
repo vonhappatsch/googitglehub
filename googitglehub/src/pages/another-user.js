@@ -11,7 +11,7 @@ const MyAbout = styled.section`
     width: 50w;
 
     background-color: rgb(251, 253, 253);
-    box-shadow: -8px 8px black;
+    box-shadow: -8px 8px ${(props => (props.theme.black))};;
 
     padding: 5vh 0vw 5vh 0vh;
     @media screen and (max-width: 768px) {

@@ -20,36 +20,27 @@ const MyUserInfo = styled.section`
 
     margin-top: 6vh;
 
-    p {
-        background-color: rgb(253, 253, 253);
-        font-family: 'Lato', sans-serif;
-        font-weight: 300;
-    }
-
     .btn:hover {
-        background-color: rgb(219, 248, 248);
-    }
-
-    .btn:active, {
-        color: black;
+        background-color: ${(props => (props.theme.aqua))};
+        color: ${(props => (props.theme.black))};
     }
 `
 
 const MyButton = styled.button`
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.5em 0.5em;
-  border-radius: 3px;
+    font-size: 1em;
+    margin: 1em;
+    padding: 0.5em 0.5em;
+    border-radius: 3px;
 
-  color: rgb(248, 251, 246);
-  background-color: ${(props => (props.theme.lilac))};
-  border: 2px solid ${(props => (props.theme.aqua))};
-  outline: none;
+    color: rgb(248, 251, 246);
+    background-color: ${(props => (props.theme.lilac))};
+    border: 2px solid ${(props => (props.theme.aqua))};
+    outline: none;
 
-  font-family: 'Old Standard TT', serif;
-  font-size: 3vh;
-  font-weight: 700;
-  text-shadow: 0.5px 0.2px 0.3px rgb(31, 31, 31);
+    font-family: 'Old Standard TT', serif;
+    font-size: 3vh;
+    font-weight: 700;
+    text-shadow: 0.5px 0.2px 0.3px rgb(31, 31, 31);
 `;
 
 class UserInfo extends Component {

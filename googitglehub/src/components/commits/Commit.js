@@ -12,7 +12,7 @@ const MyCommitList = styled.section`
     margin: 6vh 0vw 10vh 6vw;
 
     background-color: ${(props => (props.theme.white))};
-    box-shadow: -8px 8px black;
+    box-shadow: -8px 8px ${(props => (props.theme.black))};;
 
     .commit {
         padding: 2vh 0vw 4vh 0vw;
