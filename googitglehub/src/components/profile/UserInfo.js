@@ -45,7 +45,7 @@ class UserInfo extends Component {
             <MyUserInfo>
                 <UserProfile />
 
-                <button onClick={this.handleSubmit} name="clicked" className="btn">click</button>
+                <button onClick={this.handleSubmit} name="clicked" className="btn">check repos</button>
 
                 {
                     this.state.btnClicked === "clicked" && <RepoList />

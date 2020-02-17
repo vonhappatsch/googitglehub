@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Navbar from './components/navigation/Navbar.js';
 import Home from './pages/home.js';
+import Commit from './components/commits/Commit.js';
+import AnotherUser from './pages/another-user.js';
 
 /* 
 This is the layout component. It's displayed by the top-level Route
@@ -14,16 +16,12 @@ If the URL is /user/:username then the User component will be displayed.
 class App extends React.Component {
   render() {
     return (
-      <div>
-        <header>
-          <BrowserRouter>
-            <Navbar />
-          </BrowserRouter>
-        </header>
-        <main>
-            <Home />
-        </main>
-      </div>
+      <Router>
+              <Navbar />
+              <Route exact path='/' component={Home} />
+              <Route path='/commit-list/:repo_name' component={Commit} />
+              <Route path='/another-user' component={AnotherUser} />
+      </Router>
     );
   }
 };

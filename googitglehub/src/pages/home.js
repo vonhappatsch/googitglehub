@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import UserInfo from '../components/profile/UserInfo.js'
+import UserInfo from '../components/profile/UserInfo.js';
 
 const MyAbout = styled.section`
     display: flex;

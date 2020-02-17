@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const MyRepoList = styled.section`
@@ -9,8 +10,9 @@ const MyRepoList = styled.section`
 
     background-color: rgb(253, 253, 253);
 
-    p {
-        padding: 1vh 1vw 1vh 1vw;
+    .repo-link {
+        background-color: rgb(253, 253, 253);
+        padding: 2vh 1vw 1vh 1vw;
     }
 `
 
@@ -30,7 +32,7 @@ class RepoList extends Component {
         return (
             <MyRepoList>
                 {
-                    this.state.repositories.map(repo => <p key={repo.id}>{repo.name}</p>)
+                    this.state.repositories.map(repo => <Link to={'/commit-list/' + repo.name} key={repo.id} className="repo-link">{repo.name}</Link>)
                 }
             </MyRepoList>
         );

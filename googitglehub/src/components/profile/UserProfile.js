@@ -8,7 +8,7 @@ const MyUserProfile = styled.section`
 
     .user-info-card {
         background-color: rgb(253, 253, 253);
-        padding: 0vh 1vw vh 1vw;
+        padding: 0vh 1vw 2vh 1vw;
         display: flex;
         flex-flow: column nowrap;
         justify-content: space-around;
