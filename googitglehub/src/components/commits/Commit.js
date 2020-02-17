@@ -8,30 +8,70 @@ const MyCommitList = styled.section`
     justify-content: space-around;
     align-items: space-between;
     width: 80vw;
-    padding: 2vh 4vw 1vh 4vw;
+    padding: 2vh 4vw 3vh 4vw;
     margin: 6vh 0vw 10vh 6vw;
 
-    background-color: rgb(253, 253, 253);
+    background-color: ${(props => (props.theme.white))};
     box-shadow: -8px 8px black;
 
     .commit {
-        padding: 2vh 0vw 2vh 0vw;
-        background-color: rgb(253, 253, 253);
+        padding: 2vh 0vw 4vh 0vw;
+        background-color: ${(props => (props.theme.white))};
+    }
+
+    .date {
+        font-size: 1.8vh;
+    }
+
+    .message {
+        font-size: 3vh;
+    }
+
+    .author {
+        font-size: 2.2vh;
+        font-weight: 400;
+    }
+
+    .filter-input {
+        padding: 5vh 1vw 2vh 1vw;
+
+        border: none;
+        border-bottom: 2px solid ${(props => (props.theme.aqua))};
+        outline: none;
+        background-color: ${(props => (props.theme.white))};
+        color: ${(props => (props.theme.lilac))};
+
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        font-size: 2.2vh;
+        text-shadow: 1px 1px 3px rgba(82,82,82,0.11);
+    }
+
+    .filter-input:focus {
+        border-bottom: 2.5px solid rgb(219, 248, 248);
+    }
+
+    h3 {
+        padding: 6vh 0vw 1vh 0vw;
+        font-family: 'Old Standard TT', serif;
+        font-size: 4vh;
+        background-color: ${(props => (props.theme.white))};
+        text-shadow: 2px 3px 3px rgba(82,82,82,0.08);
     }
 
     p {
-        background-color: rgb(253, 253, 253);
-        line-height: 4vh;
-        font-size: 2.5vh;
+        background-color: ${(props => (props.theme.white))};
+        line-height: 3.5vh;
         font-family: 'Lato', sans-serif;
         font-weight: 300;
-        // text-align: left;
+        text-shadow: 1px 2px 4px rgba(82,82,82,0.06);
     }
 `
 
 class Commit extends Component {
     state = {
-        commits: []
+        commits: [],
+        search: ''
     }
 
     componentDidMount() {
@@ -42,20 +82,44 @@ class Commit extends Component {
             })
     }
 
+    searchCommit = (e) => {
+        this.setState({ search: e.target.value }, () => {});
+    }
 
     render() {
+        let filterCommits = this.state.commits.filter(commit => commit.commit.message.toLowerCase().includes(this.state.search.toLowerCase()));
+
+        const filteredCommits = () => {
+            if (this.state.search === '') {
+                return this.state.commits.map((commit, i) => (
+                    <div key={i}>
+                        <div className="commit">
+                            <p className="date">{commit.commit.author.date}</p>
+                            <p className="message">{commit.commit.message}</p>
+                            <p className="author">{commit.commit.author.name}</p>
+                        </div>
+                    </div>
+                ));
+            } else if (filterCommits) {
+                return filterCommits.map((commit, i) => (
+                    <div key={i}>
+                        <div className="commit">
+                            <p className="date">{commit.commit.author.date}</p>
+                            <p className="message">{commit.commit.message}</p>
+                            <p className="author">{commit.commit.author.name}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        }
+
         return (
             <MyCommitList>
 
-                {
-                    this.state.commits.map(commit => (
-                        <div key={commit.node_id} className="commit">
-                            <p>{commit.commit.author.date}</p>
-                            <p>{commit.commit.message}</p>
-                            <p>{commit.commit.author.name}</p>
-                        </div>
-                    ))
-                }
+                <input type="search" className="filter-input" placeholder="Digite o conteúdo do -m que deseja buscar" onChange={this.searchCommit} />
+
+                <h3>20 últimos commits:</h3>
+                {filteredCommits()}
 
             </MyCommitList>
         );

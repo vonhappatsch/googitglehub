@@ -17,10 +17,14 @@ code {
 * {
   margin: 0;
   padding: 0;
-  background-color: rgb(154, 170, 170);
+  background-color: rgb(248, 251, 246);
   color: rgb(31, 31, 31);
 }
 
 main {
   padding: 3vh 6vw 3vh 6vw;
+}
+
+btn {
+  color: rgb(251, 253, 253);
 }

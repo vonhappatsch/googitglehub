@@ -9,11 +9,20 @@ const MyRepoList = styled.section`
     align-items: center;
     margin: 0vh 0vw 2vh 0vw;
 
-    background-color: rgb(253, 253, 253);
+    background: ${(props => (props.theme.yellow))};
 
     .repo-link {
+        width: 40vw;
+        height: auto;
+        padding: 5vh 2vw 5vh 2vw;
+        margin: 1vh 0vw 2vh 0vw;
+        box-shadow: 4px 4px black;
+        border-radius: 2px;
+
         background-color: rgb(253, 253, 253);
-        padding: 2vh 1vw 1vh 1vw;
+
+        text-decoration: none;
+        word-wrap: break-word;
     }
 `
 
@@ -29,11 +38,19 @@ class RepoList extends Component {
             })
     }
 
+    // fazer botoes com essas funções:
+
+    // order by stars
+
+    // order by date
+
+    // order by name
+
     render() {
         return (
             <MyRepoList>
                 {
-                    this.state.repositories.map(repo => <Link to={'/commit-list/' + repo.name} key={repo.id} className="repo-link">{repo.name}</Link>)
+                    this.state.repositories.map(repo => <Link to={'/commit-list/' + repo.name} key={repo.id} className="repo-link">{repo.name}<p>{repo.description}</p></Link>)
                 }
             </MyRepoList>
         );

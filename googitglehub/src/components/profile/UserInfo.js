@@ -10,7 +10,7 @@ const MyUserInfo = styled.section`
     align-items: center;
     width: 50w;
 
-    background-color: rgb(253, 253, 253);
+    background: ${(props => (props.theme.yellow))};
     box-shadow: -8px 8px black;
 
     padding: 5vh 0vw 5vh 0vh;
@@ -26,10 +26,31 @@ const MyUserInfo = styled.section`
         font-weight: 300;
     }
 
-    .btn {
-        width: 10vw;
+    .btn:hover {
+        background-color: rgb(219, 248, 248);
+    }
+
+    .btn:active, {
+        color: black;
     }
 `
+
+const MyButton = styled.button`
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.5em 0.5em;
+  border-radius: 3px;
+
+  color: rgb(248, 251, 246);
+  background-color: ${(props => (props.theme.lilac))};
+  border: 2px solid ${(props => (props.theme.aqua))};
+  outline: none;
+
+  font-family: 'Old Standard TT', serif;
+  font-size: 3vh;
+  font-weight: 700;
+  text-shadow: 0.5px 0.2px 0.3px rgb(31, 31, 31);
+`;
 
 class UserInfo extends Component {
     state = {
@@ -45,7 +66,7 @@ class UserInfo extends Component {
             <MyUserInfo>
                 <UserProfile />
 
-                <button onClick={this.handleSubmit} name="clicked" className="btn">check repos</button>
+                <MyButton onClick={this.handleSubmit} name="clicked" className="btn">check repos</MyButton>
 
                 {
                     this.state.btnClicked === "clicked" && <RepoList />

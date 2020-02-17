@@ -7,7 +7,7 @@ const MyNavbarContent = styled.nav`
     justify-content: space-evenly;
     align-items: center;
 
-    background-color: rgb(219, 248, 248);
+    background: ${(props => (props.theme.aqua))};
     color: rgb(31, 31, 31);
     box-shadow: 10px 6px black;
     font-family: 'Lato', sans-serif;
@@ -19,8 +19,9 @@ const MyNavbarContent = styled.nav`
         font-family: 'Old Standard TT', serif;
         font-size: 5vh;
         font-weight: bold;
-        text-shadow: 2px 1px 3px rgb(31, 31, 31);
-        background-color: rgb(219, 248, 248);
+        text-shadow: 2px 3px 5px rgba(82,82,82,0.41);
+
+        background: ${(props => (props.theme.aqua))};
 
         @media screen and (max-width: 768px) {
             font-size: 3vh;
@@ -36,7 +37,7 @@ const MyNavbarContent = styled.nav`
         align-items: center;
         list-style: none;
         width: 40vw;
-        background-color: rgb(219, 248, 248);
+        background: ${(props => (props.theme.aqua))};
 
         @media screen and (max-width: 768px) {
             width: 60vw;
@@ -45,9 +46,11 @@ const MyNavbarContent = styled.nav`
 
     .link {
         color: rgb(31, 31, 31);
-        background-color: rgb(219, 248, 248);
+        background: ${(props => (props.theme.aqua))};
         font-size: 2.5vh;
         text-decoration: none;
+        text-shadow: 2px 3px 5px rgba(82,82,82,0.12);
+
         @media screen and (max-width: 768px) {
             font-size: 2vh;
         }
@@ -59,7 +62,7 @@ const MyNavbarContent = styled.nav`
     }
 
     li {
-        background-color: rgb(219, 248, 248);
+        background: ${(props => (props.theme.aqua))};
     }
 `
 

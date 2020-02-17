@@ -7,7 +7,7 @@ const MyUserProfile = styled.section`
     flex-flow: row nowrap;
 
     .user-info-card {
-        background-color: rgb(253, 253, 253);
+        background-color: ${(props => (props.theme.yellow))};
         padding: 0vh 1vw 2vh 1vw;
         display: flex;
         flex-flow: column nowrap;
@@ -16,7 +16,7 @@ const MyUserProfile = styled.section`
     }
 
     figure {
-        background-color: rgb(253, 253, 253);
+        background: ${(props => (props.theme.yellow))};
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
@@ -25,14 +25,19 @@ const MyUserProfile = styled.section`
     .user-avatar {
         width: 40%;
         height: auto;
+        box-shadow: 5px -5px black;
     }
 
     .user-login {
-        background-color: rgb(253, 253, 253);
+        background: ${(props => (props.theme.yellow))};
         font-size: 2.8vh;
         font-family: 'Old Standard TT', serif;
         font-weight: 400i;
         line-height: 6vh;
+    }
+
+    .user-following, .user-repos, .user-bio {
+        background: ${(props => (props.theme.yellow))};
     }
 
     p {
@@ -41,7 +46,7 @@ const MyUserProfile = styled.section`
     }
 
     b, i {
-        background-color: rgb(253, 253, 253);
+        background: ${(props => (props.theme.yellow))};
     }
 
     @media screen and (min-width: 768px) {
@@ -79,12 +84,13 @@ class UserProfile extends Component {
         return (
             <MyUserProfile>
                 { 
-                    informationArr.map(info => (
-                        <div key={info.login} className="user-info-card">
+                    informationArr.map((info, i) => (
+                        <div key={i} className="user-info-card">
                             <figure>
                                 <img src={info.avatar_url} alt="avatar" className="user-avatar" />
                                 <figcaption className="user-login"><i>{info.login}</i></figcaption>
                             </figure>
+                            <p className="user-bio">{info.bio}</p>
                             <p className="user-following"><b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}</p>
                             <p className="user-repos"><b>Public repos</b>: {info.public_repos}</p>
                         </div>
