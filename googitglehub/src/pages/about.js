@@ -37,6 +37,13 @@ const MyAbout = styled.section`
 
     img {
         box-shadow: 5px -5px ${(props => (props.theme.black))};
+        width: 60vw;
+    }
+
+    @media screen and (min-width: 768px) {
+        img {
+            width: 100%;
+        }
     }
 `
 

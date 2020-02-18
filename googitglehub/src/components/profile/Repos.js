@@ -12,9 +12,9 @@ const MyRepoList = styled.section`
     background: ${(props => (props.theme.yellow))};
 
     .repo-link {
-        width: 40vw;
+        width: 60vw;
         height: auto;
-        padding: 5vh 2vw 5vh 2vw;
+        padding: 5vh 5vw 5vh 5vw;
         margin: 1vh 0vw 2vh 0vw;
         box-shadow: 4px 4px black;
         border-radius: 2px;
@@ -25,6 +25,12 @@ const MyRepoList = styled.section`
         font-weight: bold;
         text-decoration: none;
         word-wrap: break-word;
+    }
+
+    @media screen and (min-width: 768px) {
+        .repo-link {
+            width: 50vw;
+        }
     }
 
     .repo-description {
