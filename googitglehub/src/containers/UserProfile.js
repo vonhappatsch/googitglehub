@@ -102,7 +102,9 @@ class UserProfile extends Component {
                                 <figcaption className="user-login"><i>{info.login}</i></figcaption>
                             </figure>
                             <p className="user-bio">{info.bio}</p>
-                            <p className="user-following"><b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}</p>
+                            <p className="user-following">
+                                <b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}
+                            </p>
                             <p className="user-repos"><b>Public repos</b>: {info.public_repos}</p>
                         </div>
                     ))

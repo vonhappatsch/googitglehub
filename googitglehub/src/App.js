@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import Navbar from './components/navigation/Navbar.js';
-import Home from './pages/home.js';
-import Commit from './components/commits/Commit.js';
-import About from './pages/about.js';
+import Navbar from './containers/Navbar';
+import Home from './pages/home';
+import Commit from './containers/Commit';
+import About from './pages/about';
 
 /* 
 This is the layout component. It's displayed by the top-level Route

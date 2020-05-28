@@ -1,16 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import NavbarContent from './NavbarContent.js';
+import NavbarContent from '../components/NavbarContent';
 
 const MyNavBar = styled.div`
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
 `
+
 const Navbar = () => {
     return(
         <MyNavBar>
-            <NavbarContent />
+            <NavbarContent
+              title="googitglehub"
+              firstLink="/"
+              secondLink="/about"
+              firstLinkTitle="Home"
+              secondLinkTitle="About"
+            />
         </MyNavBar>
     );
 }

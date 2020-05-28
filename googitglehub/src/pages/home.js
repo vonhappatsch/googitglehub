@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserInfo from '../components/profile/UserInfo.js';
+import UserInfo from '../containers/UserInfo.js';
 
 class Home extends Component {
     render() {

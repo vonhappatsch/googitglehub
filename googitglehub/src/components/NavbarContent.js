@@ -66,17 +66,16 @@ const MyNavbarContent = styled.nav`
     }
 `
 
-const NavbarContent = () => {
+const NavbarContent = (props) => {
     return(
         <MyNavbarContent>
-            <p className="logo">googitglehub</p>
-
+            <p className="logo">{props.title}</p>
             <ul className="nav-links">
                 <li>
-                    <Link to="/" className="link">Home</Link>
+                    <Link to={`${props.firstLink}`} className="link">{props.firstLinkTitle}</Link>
                 </li>
                 <li>
-                    <Link to="/about" className="link">About</Link>
+                    <Link to={`${props.secondLink}`} className="link">{props.secondLinkTitle}</Link>
                 </li>
             </ul>
         </MyNavbarContent>

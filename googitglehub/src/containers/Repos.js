@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Repo from '../components/Repo';
 
 const MyRepoList = styled.section`
     display: flex;
@@ -43,26 +43,32 @@ const MyRepoList = styled.section`
 `
 
 class RepoList extends Component {
-    state = {
-        repositories: []
-    }
+  state = {
+    repositories: []
+  }
 
-    componentDidMount() {
-        axios.get(`https://api.github.com/users/vonhappatsch/repos`)
-            .then(res => {
-                this.setState({ repositories: res.data });
-            })
-    }
+  componentDidMount() {
+    axios.get(`https://api.github.com/users/vonhappatsch/repos`)
+      .then(res => {
+        this.setState({ repositories: res.data });
+      })
+  }
 
-    render() {
-        return (
-            <MyRepoList>
-                {
-                    this.state.repositories.map(repo => <Link to={'/commit-list/' + repo.name} key={repo.id} className="repo-link">{repo.name}<p className="repo-description">{repo.description}</p></Link>)
-                }
-            </MyRepoList>
-        );
-    }
+  render() {
+    return (
+      <MyRepoList>
+        {
+          this.state.repositories.map(repo =>
+            <Repo 
+              key={repo.id}
+              name={repo.name}
+              description={repo.description}
+            />
+          )
+        }
+      </MyRepoList>
+    );
+  }
 }
 
 export default RepoList;

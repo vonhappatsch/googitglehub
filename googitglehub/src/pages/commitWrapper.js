@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Commit from '../components/commits/Commit.js';
+import Commit from '../containers/Commit';
 
 const MyCommits = styled.section`
     display: flex;
@@ -29,14 +29,12 @@ const MyCommits = styled.section`
     }
 `
 
-class CommitList extends Component {
-    render() {
-        return (
-            <MyCommits>
-                <Commit />
-            </MyCommits>
-        );
-    }
+const CommitWrapper = () => {
+    return (
+        <MyCommits>
+            <Commit />
+        </MyCommits>
+    );
 }
 
-export default CommitList;
+export default CommitWrapper;
