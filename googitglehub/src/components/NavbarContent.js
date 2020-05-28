@@ -67,19 +67,19 @@ const MyNavbarContent = styled.nav`
 `
 
 const NavbarContent = (props) => {
-    return(
-        <MyNavbarContent>
-            <p className="logo">{props.title}</p>
-            <ul className="nav-links">
-                <li>
-                    <Link to={`${props.firstLink}`} className="link">{props.firstLinkTitle}</Link>
-                </li>
-                <li>
-                    <Link to={`${props.secondLink}`} className="link">{props.secondLinkTitle}</Link>
-                </li>
-            </ul>
-        </MyNavbarContent>
-    );
-}
+  return (
+    <MyNavbarContent>
+      <p className="logo">{props.title}</p>
+      <ul className="nav-links">
+        <li>
+          <Link to={`${props.firstLink}`} className="link">{props.firstLinkTitle}</Link>
+        </li>
+        <li>
+          <Link to={`${props.secondLink}`} className="link">{props.secondLinkTitle}</Link>
+        </li>
+      </ul>
+    </MyNavbarContent>
+  );
+};
 
 export default NavbarContent;

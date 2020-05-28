@@ -7,7 +7,7 @@ const Repo = (props) => {
       key={props.id} className="repo-link">
       {props.name}<p className="repo-description">{props.description}</p>
     </Link>
-  )
-}
+  );
+};
 
 export default Repo;

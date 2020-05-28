@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import Repo from '../components/Repo';
+import Loading from '../components/Loading';
 
 const MyRepoList = styled.section`
     display: flex;
@@ -44,21 +44,27 @@ const MyRepoList = styled.section`
 
 class RepoList extends Component {
   state = {
-    repositories: []
+    repositories: [],
+    isLoading: true
   }
 
-  componentDidMount() {
-    axios.get(`https://api.github.com/users/vonhappatsch/repos`)
-      .then(res => {
-        this.setState({ repositories: res.data });
-      })
+  async componentDidMount() {
+    await fetch(`https://api.github.com/users/vonhappatsch/repos`)
+      .then(res => res.json())
+      .then(data => this.setState({ repositories: data }))
+      .then(this.setState({ isLoading: false }))
+      .catch(err => {
+        console.log(`There was the following error when fetching the API: ${err}`);
+      });
   }
 
   render() {
     return (
       <MyRepoList>
         {
-          this.state.repositories.map(repo =>
+          this.state.isLoading 
+          ? <Loading />
+          : this.state.repositories.map(repo =>
             <Repo 
               key={repo.id}
               name={repo.name}
@@ -69,6 +75,6 @@ class RepoList extends Component {
       </MyRepoList>
     );
   }
-}
+};
 
 export default RepoList;

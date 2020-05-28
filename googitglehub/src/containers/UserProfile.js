@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
+import Loading from '../components/Loading';
 
 const MyUserProfile = styled.section`
     display: flex;
@@ -77,42 +77,50 @@ const MyUserProfile = styled.section`
 `
 
 class UserProfile extends Component {
-    state = {
-        information: []
-    }
+  // aqui ele deveria receber como parametro o prop do user pra poder preencher as informações
 
-    componentDidMount() {
-        axios.get(`https://api.github.com/users/vonhappatsch`)
-            .then(res => {
-                this.setState({ information: res.data });
-            })
-    }
+  state = {
+    informations: [],
+    isLoading: true
+  }
 
-    
-    render() {
-        const informationArr = [];
-        informationArr.push(this.state.information);
-        return (
-            <MyUserProfile>
-                { 
-                    informationArr.map((info, i) => (
-                        <div key={i} className="user-info-card">
-                            <figure>
-                                <img src={info.avatar_url} alt="avatar" className="user-avatar" />
-                                <figcaption className="user-login"><i>{info.login}</i></figcaption>
-                            </figure>
-                            <p className="user-bio">{info.bio}</p>
-                            <p className="user-following">
-                                <b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}
-                            </p>
-                            <p className="user-repos"><b>Public repos</b>: {info.public_repos}</p>
-                        </div>
-                    ))
-                }
-            </MyUserProfile>
-        )
-    }       
-}
+  async componentDidMount() {
+    await fetch('https://api.github.com/users/vonhappatsch')
+      .then(res => res.json())
+      .then(data => this.setState({ informations: data }))
+      .then(this.setState({ isLoading: false }))
+      .catch(err => {
+        console.log(`There was the following error when fetching the API: ${err}`);
+      });
+  }
+
+
+  render() {
+    const informationArr = [];
+    informationArr.push(this.state.informations);
+    return (
+      <MyUserProfile>
+        {
+          this.state.isLoading
+          ? <Loading />
+          : informationArr.map((info, i) => (
+            <div key={i} className="user-info-card">
+              <figure>
+                <img src={info.avatar_url} alt="avatar" className="user-avatar" />
+                <figcaption className="user-login"><i>{info.login}</i></figcaption>
+              </figure>
+              <p className="user-bio">{info.bio}</p>
+              <p className="user-following">
+                <b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}
+              </p>
+              <p className="user-repos"><b>Public repos</b>: {info.public_repos}</p>
+            </div>
+          ))
+        }
+      </MyUserProfile>
+    );
+  }
+};
 
 
 export default UserProfile;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Commit(props) {
+const Commit = (props) => {
   return (
     <div key={props.i}>
       <div className="commit">
@@ -11,3 +11,5 @@ export default function Commit(props) {
     </div>
   );
 };
+
+export default Commit;

@@ -28,32 +28,32 @@ const MyUserInfo = styled.section`
 `
 
 class UserInfo extends Component {
-    state = {
-        btnClicked: ''
-    }
+  state = {
+    btnClicked: ''
+  }
 
-    handleSubmit = (e) => {
-        this.setState({ btnClicked: e.target.name });
-    }
+  handleSubmit = (e) => {
+    this.setState({ btnClicked: e.target.name });
+  }
 
-    render() {
-        return (
-            <MyUserInfo>
-                <UserProfile />
-                <Button 
-                    onClick={this.handleSubmit} 
-                    name="clicked" 
-                    className="btn"
-                >
-                        check repos
+  render() {
+    return (
+      <MyUserInfo>
+        <UserProfile />
+        <Button
+          onClick={this.handleSubmit}
+          name="clicked"
+          className="btn"
+        >
+          check repos
                 </Button>
 
-                {
-                    this.state.btnClicked === "clicked" && <RepoList />
-                }
-            </MyUserInfo>
-        );
-    }
-}
+        {
+          this.state.btnClicked === "clicked" && <RepoList />
+        }
+      </MyUserInfo>
+    );
+  }
+};
 
 export default UserInfo;

@@ -9,17 +9,17 @@ const MyNavBar = styled.div`
 `
 
 const Navbar = () => {
-    return(
-        <MyNavBar>
-            <NavbarContent
-              title="googitglehub"
-              firstLink="/"
-              secondLink="/about"
-              firstLinkTitle="Home"
-              secondLinkTitle="About"
-            />
-        </MyNavBar>
-    );
-}
+  return (
+    <MyNavBar>
+      <NavbarContent
+        title="googitglehub"
+        firstLink="/"
+        secondLink="/about"
+        firstLinkTitle="Home"
+        secondLinkTitle="About"
+      />
+    </MyNavBar>
+  );
+};
 
 export default Navbar;

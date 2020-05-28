@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Loading from '../components/Loading';
 
 const MyAbout = styled.section`
     display: flex;
@@ -47,18 +48,34 @@ const MyAbout = styled.section`
     }
 `
 
-const About = () => {
-    return(
-        <MyAbout>
+class About extends React.Component {
+  state = {
+    isLoading: true
+  }
+
+  componentDidMount() {
+    this.setState({ isLoading: false });
+  }
+
+  render() {
+    return (
+      <MyAbout>
+        {
+          this.state.isLoading
+          ? <Loading />
+          : 
+          <>
             <h3>que que isso aqui? </h3>
             <p>Isso aqui é mais como um exercício para treinar React, baseado no desafio encontrado <a href="https://github.com/Gympass/front-end-coding-test">aqui</a>.</p>
             <p>A ideia é seguir treinando com os desafios que ficam em listas repositórios abertos e esse é um dos primeiros da "série".</p>
             <figure>
-                <img src="https://i.imgur.com/IkdLIvu.gif" alt="um gif do pusheen no git" />
-            </figure>
-        </MyAbout>
-    );
-}
-
+              <img src="https://i.imgur.com/IkdLIvu.gif" alt="um gif do pusheen no git" />
+            </figure>  
+          </>
+        }
+      </MyAbout>
+    );  
+  }
+};
 
 export default About;

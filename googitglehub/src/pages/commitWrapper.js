@@ -30,11 +30,11 @@ const MyCommits = styled.section`
 `
 
 const CommitWrapper = () => {
-    return (
-        <MyCommits>
-            <Commits />
-        </MyCommits>
-    );
-}
+  return (
+    <MyCommits>
+      <Commits />
+    </MyCommits>
+  );
+};
 
 export default CommitWrapper;

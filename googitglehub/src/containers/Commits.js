@@ -127,7 +127,6 @@ class Commits extends Component {
       </MyCommitList>
     );
   }
-}
-
+};
 
 export default Commits;

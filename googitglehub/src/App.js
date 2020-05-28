@@ -14,19 +14,17 @@ const theme = {
   lilac: '#AB6FD6'
 }
 
-class App extends React.Component {
-  render() {
-    return (
-      <Router basename={process.env.PUBLIC_URL}>
-        <ThemeProvider theme={theme}>
-          <Navbar />
-          <Route exact path='/' component={Home} />
-          <Route path='/commit-list/:repo_name' component={Commits} />
-          <Route path='/about' component={About} />
-        </ThemeProvider>
-      </Router>
-    );
-  }
+const App = () => {
+  return (
+    <Router basename={process.env.PUBLIC_URL}>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <Route exact path='/' component={Home} />
+        <Route path='/commit-list/:repo_name' component={Commits} />
+        <Route path='/about' component={About} />
+      </ThemeProvider>
+    </Router>
+  );
 };
 
 export default App;
