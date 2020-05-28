@@ -3,16 +3,8 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Navbar from './containers/Navbar';
 import Home from './pages/home';
-import Commit from './containers/Commit';
+import Commits from './containers/Commits';
 import About from './pages/about';
-
-/* 
-This is the layout component. It's displayed by the top-level Route
-this.props.children will correspond to the current URL's component.
-
-If the URL is only / then the IndexRoute's component will be the child (Search component)
-If the URL is /user/:username then the User component will be displayed.
-*/
 
 const theme = {
   white: '#FCFDFB',
@@ -29,7 +21,7 @@ class App extends React.Component {
         <ThemeProvider theme={theme}>
           <Navbar />
           <Route exact path='/' component={Home} />
-          <Route path='/commit-list/:repo_name' component={Commit} />
+          <Route path='/commit-list/:repo_name' component={Commits} />
           <Route path='/about' component={About} />
         </ThemeProvider>
       </Router>

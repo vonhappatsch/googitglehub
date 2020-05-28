@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Commit from '../containers/Commit';
+import Commits from '../containers/Commits';
 
 const MyCommits = styled.section`
     display: flex;
@@ -32,7 +32,7 @@ const MyCommits = styled.section`
 const CommitWrapper = () => {
     return (
         <MyCommits>
-            <Commit />
+            <Commits />
         </MyCommits>
     );
 }

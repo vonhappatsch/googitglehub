@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import Commit from '../components/Commit';
 
 const MyCommitList = styled.section`
     display: flex;
@@ -68,7 +69,7 @@ const MyCommitList = styled.section`
     }
 `
 
-class Commit extends Component {
+class Commits extends Component {
   state = {
     commits: [],
     search: ''
@@ -83,7 +84,7 @@ class Commit extends Component {
   }
 
   searchCommit = (e) => {
-    this.setState({ search: e.target.value }, () => { });
+    this.setState({ search: e.target.value });
   }
 
   render() {
@@ -92,30 +93,27 @@ class Commit extends Component {
     const filteredCommits = () => {
       if (this.state.search === '') {
         return this.state.commits.map((commit, i) => (
-          <div key={i}>
-            <div className="commit">
-              <p className="date">{commit.commit.author.date}</p>
-              <p className="message">{commit.commit.message}</p>
-              <p className="author">{commit.commit.author.name}</p>
-            </div>
-          </div>
+          <Commit 
+            key={i}
+            date={commit.commit.author.date}
+            message={commit.commit.message}
+            author={commit.commit.author.name}
+          />
         ));
       } else if (filterCommits) {
         return filterCommits.map((commit, i) => (
-          <div key={i}>
-            <div className="commit">
-              <p className="date">{commit.commit.author.date}</p>
-              <p className="message">{commit.commit.message}</p>
-              <p className="author">{commit.commit.author.name}</p>
-            </div>
-          </div>
+          <Commit 
+            key={i}
+            date={commit.commit.author.date}
+            message={commit.commit.message}
+            author={commit.commit.author.name}
+          />
         ))
       }
     }
 
     return (
       <MyCommitList>
-
         <input type="search"
           className="filter-input"
           placeholder="Digite o conteúdo do -m que deseja buscar"
@@ -123,12 +121,13 @@ class Commit extends Component {
         />
 
         <h3>20 últimos commits:</h3>
-        {filteredCommits()}
-
+        {
+          filteredCommits()
+        }
       </MyCommitList>
     );
   }
 }
 
 
-export default Commit;
+export default Commits;
