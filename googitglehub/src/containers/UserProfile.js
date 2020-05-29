@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Loading from '../components/Loading';
+import UserInfo from '../containers/UserInfo'
 
 const MyUserProfile = styled.section`
     display: flex;
@@ -77,15 +78,28 @@ const MyUserProfile = styled.section`
 `
 
 class UserProfile extends Component {
-  // aqui ele deveria receber como parametro o prop do user pra poder preencher as informações
-
   state = {
     informations: [],
     isLoading: true
   }
 
+  user = 'vonhappatsch'
+  token = '339ababe497082abfc14aaf53881d225c2105bf8';
+  endpoint = 'https://api.github.com';
+
+  creds = `${this.user}:${this.token}`;
+  auth = btoa(this.creds);
+
+  options = {
+    mode: 'cors',
+    headers: {
+      'Authorization': 'Basic ' + this.auth,
+    }
+  }
+
   async componentDidMount() {
-    await fetch('https://api.github.com/users/vonhappatsch')
+    const user = this.props.match.params.user;
+    await fetch(`https://api.github.com/users/${user}`, this.options)
       .then(res => res.json())
       .then(data => this.setState({ informations: data }))
       .then(this.setState({ isLoading: false }))
@@ -94,7 +108,6 @@ class UserProfile extends Component {
       });
   }
 
-
   render() {
     const informationArr = [];
     informationArr.push(this.state.informations);
@@ -102,20 +115,21 @@ class UserProfile extends Component {
       <MyUserProfile>
         {
           this.state.isLoading
-          ? <Loading />
-          : informationArr.map((info, i) => (
-            <div key={i} className="user-info-card">
-              <figure>
-                <img src={info.avatar_url} alt="avatar" className="user-avatar" />
-                <figcaption className="user-login"><i>{info.login}</i></figcaption>
-              </figure>
-              <p className="user-bio">{info.bio}</p>
-              <p className="user-following">
-                <b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}
-              </p>
-              <p className="user-repos"><b>Public repos</b>: {info.public_repos}</p>
-            </div>
-          ))
+            ? <Loading />
+            : informationArr.map((info, i) => (
+              <div key={i} className="user-info-card">
+                <figure>
+                  <img src={info.avatar_url} alt="avatar" className="user-avatar" />
+                  <figcaption className="user-login"><i>{info.login}</i></figcaption>
+                </figure>
+                <p className="user-bio">{info.bio}</p>
+                <p className="user-following">
+                  <b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}
+                </p>
+                <p className="user-repos"><b>Public repos</b>: {info.public_repos}</p>
+                <UserInfo user={info.login} />
+              </div>
+            ))
         }
       </MyUserProfile>
     );

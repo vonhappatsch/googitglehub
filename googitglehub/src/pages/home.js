@@ -1,10 +1,10 @@
 import React from 'react';
-import UserInfo from '../containers/UserInfo.js';
+import GetUsers from '../containers/GetUsers';
 
 const Home = () => {
   return (
     <main>
-      <UserInfo />
+      <GetUsers />
     </main>
   );
 };

@@ -5,6 +5,7 @@ import Navbar from './containers/Navbar';
 import Home from './pages/home';
 import Commits from './containers/Commits';
 import About from './pages/about';
+import UserProfile from './containers/UserProfile';
 
 const theme = {
   white: '#FCFDFB',
@@ -20,7 +21,8 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Navbar />
         <Route exact path='/' component={Home} />
-        <Route path='/commit-list/:repo_name' component={Commits} />
+        <Route path='/commit-list/:user/:repo_name' component={Commits} />
+        <Route path='/profile/:user' component={UserProfile} />
         <Route path='/about' component={About} />
       </ThemeProvider>
     </Router>

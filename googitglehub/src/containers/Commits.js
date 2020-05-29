@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import styled from 'styled-components';
 import Commit from '../components/Commit';
 
@@ -75,12 +74,30 @@ class Commits extends Component {
     search: ''
   }
 
+  user = 'vonhappatsch'
+  token = '339ababe497082abfc14aaf53881d225c2105bf8';
+  endpoint = 'https://api.github.com';
+
+  creds = `${this.user}:${this.token}`;
+  auth = btoa(this.creds);
+
+  options = {
+    mode: 'cors',
+    headers: {
+      'Authorization': 'Basic ' + this.auth,
+    }
+  }
+
   componentDidMount() {
+    let user = this.props.match.params.user;
     let id = this.props.match.params.repo_name;
-    axios.get(`https://api.github.com/repos/vonhappatsch/${id}/commits?per_page=20`)
-      .then(res => {
-        this.setState({ commits: res.data });
-      })
+    let point = `https://api.github.com/repos/${user}/${id}/commits?per_page=20`
+    fetch(point, this.options)
+      .then(res => res.json())
+      .then(data => this.setState({ commits: data }))
+      .catch(err => {
+        console.log(`There was the following error when fetching the API: ${err}`);
+      });
   }
 
   searchCommit = (e) => {
@@ -117,7 +134,7 @@ class Commits extends Component {
         <input type="search"
           className="filter-input"
           placeholder="Digite o conteúdo do -m que deseja buscar"
-          onChange={this.searchCommit}
+          onChange={e => this.searchCommit(e)}
         />
 
         <h3>20 últimos commits:</h3>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import UserProfile from './UserProfile.js';
-import RepoList from './Repos.js';
+import RepoList from './RepoList.js';
 import Button from '../components/Button';
 
 const MyUserInfo = styled.section`
@@ -32,16 +31,15 @@ class UserInfo extends Component {
     btnClicked: ''
   }
 
-  handleSubmit = (e) => {
+  handleRepos = (e) => {
     this.setState({ btnClicked: e.target.name });
   }
 
   render() {
     return (
       <MyUserInfo>
-        <UserProfile />
         <Button
-          onClick={this.handleSubmit}
+          onClick={this.handleRepos}
           name="clicked"
           className="btn"
         >
@@ -49,7 +47,7 @@ class UserInfo extends Component {
                 </Button>
 
         {
-          this.state.btnClicked === "clicked" && <RepoList />
+          this.state.btnClicked === "clicked" && <RepoList user={this.props.user} />
         }
       </MyUserInfo>
     );
