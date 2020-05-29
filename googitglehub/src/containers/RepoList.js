@@ -48,22 +48,8 @@ class RepoList extends Component {
     isLoading: true
   }
 
-  user = 'vonhappatsch'
-  token = 'b2aac9468c05f55ec1513122605b54577b6bc89b';
-  endpoint = 'https://api.github.com';
-
-  creds = `${this.user}:${this.token}`;
-  auth = btoa(this.creds);
-
-  options = {
-    mode: 'cors',
-    headers: {
-      'Authorization': 'Basic ' + this.auth,
-    }
-  }
-
   async componentDidMount() {
-    await fetch(`https://api.github.com/users/${this.props.user}/repos`, this.options)
+    await fetch(`https://api.github.com/users/${this.props.user}/repos`)
       .then(res => res.json())
       .then(data => this.setState({ repositories: data }))
       .then(this.setState({ isLoading: false }))

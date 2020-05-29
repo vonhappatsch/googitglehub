@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Loading from '../components/Loading';
-import UserInfo from '../containers/UserInfo'
+import UserDetails from '../components/UserDetails';
 
 const MyUserProfile = styled.section`
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 
     .user-info-card {
         background-color: ${(props => (props.theme.yellow))};
         padding: 0vh 5vw 2vh 5vw;
+        margin-top: 8vh;
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
+        width: 80vw;
     }
 
     figure {
@@ -83,23 +87,9 @@ class UserProfile extends Component {
     isLoading: true
   }
 
-  user = 'vonhappatsch'
-  token = 'b2aac9468c05f55ec1513122605b54577b6bc89b';
-  endpoint = 'https://api.github.com';
-
-  creds = `${this.user}:${this.token}`;
-  auth = btoa(this.creds);
-
-  options = {
-    mode: 'cors',
-    headers: {
-      'Authorization': 'Basic ' + this.auth,
-    }
-  }
-
   async componentDidMount() {
     const user = this.props.match.params.user;
-    await fetch(`https://api.github.com/users/${user}`, this.options)
+    await fetch(`https://api.github.com/users/${user}`)
       .then(res => res.json())
       .then(data => this.setState({ informations: data }))
       .then(this.setState({ isLoading: false }))
@@ -117,18 +107,16 @@ class UserProfile extends Component {
           this.state.isLoading
             ? <Loading />
             : informationArr.map((info, i) => (
-              <div key={i} className="user-info-card">
-                <figure>
-                  <img src={info.avatar_url} alt="avatar" className="user-avatar" />
-                  <figcaption className="user-login"><i>{info.login}</i></figcaption>
-                </figure>
-                <p className="user-bio">{info.bio}</p>
-                <p className="user-following">
-                  <b>Followers</b>: {info.followers} || <b>Following</b>: {info.following}
-                </p>
-                <p className="user-repos"><b>Public repos</b>: {info.public_repos}</p>
-                <UserInfo user={info.login} />
-              </div>
+              <UserDetails 
+                key={info.i}
+                avatar_url={info.avatar_url}
+                login={info.login}
+                bio={info.bio}
+                followers={info.followers}
+                following={info.following}
+                public_repos={info.public_repos}
+                user={info.login}
+              />
             ))
         }
       </MyUserProfile>

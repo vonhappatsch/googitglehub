@@ -6,9 +6,9 @@ import Button from '../components/Button';
 const MyUserInfo = styled.section`
     display: flex;
     flex-flow: column nowrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    width: 50w;
+    width: 90w;
 
     background: ${(props => (props.theme.yellow))};
     box-shadow: -8px 8px black;

@@ -4,7 +4,7 @@ import UserInfo from '../containers/UserInfo';
 const userProfile = () => {
   return (
     <main>
-      <UserInfo />
+      <UserProfile />
     </main>
   );
 };

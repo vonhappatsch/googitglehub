@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UserCard from '../components/UserCard';
 
@@ -7,6 +6,11 @@ const MyUsers = styled.section`
     display: flex;
     flex-direction: column;
     padding: 3vh 0 0 0;
+
+    h3 {
+      text-align: center;
+      margin: 1vh;
+    }
 
     .filter-input {
       padding: 5vh 1vw 2vh 1vw;
@@ -32,31 +36,15 @@ export default function GetUsers() {
   const [users, setUsers] = useState([]);
   const [username, setUsername] = useState('vonhappatsch');
 
-  const user = 'vonhappatsch'
-  const token = 'b2aac9468c05f55ec1513122605b54577b6bc89b';
-  const endpoint = 'https://api.github.com';
-
-  const creds = `${user}:${token}`;
-  const auth = btoa(creds);
-
-  const options = {
-    mode: 'cors',
-    headers: {
-      'Authorization': 'Basic ' + auth,
-    }
-  }
-
-
   useEffect(() => {
     if (username !== '') {
-      let searching = `${endpoint}/search/users?q=${username}`;
-      fetch(searching, options)
+      let searching = `https://api.github.com/search/users?q=${username}`;
+      fetch(searching)
         .then(res => res.json())
         .then(data => setUsers(data.items))
         .catch(err => {
           console.log(`There was the following error when fetching the API: ${err}`);
         });
-      console.log(searching);
     }
   }, [username])
 
@@ -66,6 +54,7 @@ export default function GetUsers() {
 
   return (
     <MyUsers>
+      <h3>Procure usuários no GH, visualize o perfil, repositórios e 20 últimos commits de cada, podendo buscar por -m :)</h3>
       <input
         type="search"
         className="filter-input"

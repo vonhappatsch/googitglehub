@@ -74,25 +74,10 @@ class Commits extends Component {
     search: ''
   }
 
-  user = 'vonhappatsch'
-  token = 'b2aac9468c05f55ec1513122605b54577b6bc89b';
-  endpoint = 'https://api.github.com';
-
-  creds = `${this.user}:${this.token}`;
-  auth = btoa(this.creds);
-
-  options = {
-    mode: 'cors',
-    headers: {
-      'Authorization': 'Basic ' + this.auth,
-    }
-  }
-
   componentDidMount() {
     let user = this.props.match.params.user;
     let id = this.props.match.params.repo_name;
-    let point = `https://api.github.com/repos/${user}/${id}/commits?per_page=20`
-    fetch(point, this.options)
+    fetch(`https://api.github.com/repos/${user}/${id}/commits?per_page=20`)
       .then(res => res.json())
       .then(data => this.setState({ commits: data }))
       .catch(err => {
