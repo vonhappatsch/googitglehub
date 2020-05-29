@@ -10,9 +10,9 @@
 
 
 ### TBA:
+ - Funcionalidade de buscar outros usuários [ ] => yay, done {second version}
  - Ordenar os repos [ ]
- - Página para buscar outros usuários [ ]
 
 ### Todos:
  - Fazer testes [ ]
- - Refatorar [ ]
+ - Refatorar [ ] => work in progress
