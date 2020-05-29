@@ -84,7 +84,7 @@ class UserProfile extends Component {
   }
 
   user = 'vonhappatsch'
-  token = '339ababe497082abfc14aaf53881d225c2105bf8';
+  token = 'b2aac9468c05f55ec1513122605b54577b6bc89b';
   endpoint = 'https://api.github.com';
 
   creds = `${this.user}:${this.token}`;

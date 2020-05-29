@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import Button from '../components/Button';
 
 const Card = styled.section`
+  margin: 2vh 0 0 0 0;
+
   .user-info-card {
     background-color: ${(props => (props.theme.yellow))};
-    padding: 0vh 5vw 2vh 5vw;
+    padding: 5vh 5vw 2vh 5vw;
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
@@ -31,7 +34,22 @@ const Card = styled.section`
     font-family: 'Old Standard TT', serif;
     font-weight: 400i;
     text-shadow: 2px 3px 5px rgba(82,82,82,0.21);
-    line-height: 6vh;
+    line-height: 4vh;
+  }
+
+  .btn:hover {
+    background-color: ${(props => (props.theme.aqua))};
+}
+
+  .link {
+    text-decoration: none;
+    color: rgb(248, 251, 246);
+    background-color: ${(props => (props.theme.lilac))};
+  }
+
+  .link:hover {
+    background-color: ${(props => (props.theme.aqua))};
+    color: ${(props => (props.theme.black))};
   }
 
   b, i {
@@ -58,7 +76,7 @@ const UserCard = (props) => {
           <img src={props.avatar} alt="avatar" className="user-avatar" />
           <figcaption className="user-login"><i>{props.user}</i></figcaption>
         </figure>
-        <p><Link to={'/profile/' + props.user}>veja o perfil</Link></p>
+        <Button className="btn"><Link to={'/profile/' + props.user} className="link">veja o perfil</Link></Button>
       </div>  
     </Card>
   );
